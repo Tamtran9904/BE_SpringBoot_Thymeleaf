@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/styles/login.css}" href="../../static/styles/login.css">
+
+<!--  &lt;!&ndash; MDB &ndash;&gt;-->
+<!--  <link-->
+<!--      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"-->
+<!--      rel="stylesheet"-->
+<!--  />-->
+<!--  &lt;!&ndash; MDB &ndash;&gt;-->
+<!--  <script-->
+<!--      type="text/javascript"-->
+<!--      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"-->
+<!--  ></script>-->
+
+  <title>Title</title>
+</head>
+<body>
+<div>
+  <div class="border border-3 wrap d-flex flex-column">
+    <h2 class="text-center mb-0 border-bottom text-primary height-1 p-4">FRESHER MANAGEMENT WEB
+      APPLICATION</h2>
+    <div class="row p-login">
+      <form th:action="@{/example/fresher/login}" method="post">
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="username">User Name</label>
+          <input type="text" id="username" name="username" class="form-control" />
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="password">Password</label>
+          <input type="password"  id="password" name="password" class="form-control" />
+        </div>
+        <!-- Submit button -->
+        <div class="d-grid col-6 mx-auto">
+          <button type="submit" class="btn btn-primary" >Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

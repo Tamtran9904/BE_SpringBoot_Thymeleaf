@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/styles/add.css}" href="../../static/styles/add.css">
+  <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.4.0/css/all.min.css}"/>
+  <title>Title</title>
+</head>
+<body>
+<div>
+  <div class="border border-3 wrap d-flex flex-column">
+    <h2 class="text-center mb-0 border-bottom text-primary height-1 p-4">FRESHER MANAGEMENT WEB
+      APPLICATION</h2>
+    <div class="row ps-5 flex-grow-1">
+      <div class="border-end col-3 p-2">
+        <div class="fs-3 text-primary">Menu</div>
+        <div class="m-2">
+          <p class="mb-3"><i class="fa-solid fa-user-plus icon"></i><a class="hover-link"
+                                                                       th:href="@{/example/fresher/add}">&nbsp;&nbsp;Add
+            a new frehser</a></p>
+          <p class="mb-3"><i class="fa-solid fa-list icon"></i><a class="hover-link"
+                                                                  th:href="@{/example/fresher/find-all}">&nbsp;&nbsp;Fresher
+            List</a></p>
+        </div>
+      </div>
+      <div class="col-8 flex-grow-1 p-5">
+        <h3 class="text-center mb-4">New Fresher</h3>
+        <div class="ps-5 pe-5">
+          <form action="#" th:object="${fresherDto}" method="post"
+                th:action="@{/example/fresher/create}">
+            <div class="mb-3">
+              <label for="fresherName" class="form-label">Fresher name</label>
+              <input type="text" th:field="*{name}" class="form-control" id="fresherName">
+            </div>
+            <div class="mb-3">
+              <label for="fresherBirthDay" class="form-label">BirthDay</label>
+              <input type="text" th:field="*{birthDate}" class="form-control" id="fresherBirthDay">
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <!--Drop down gender-->
+                <label for="fresherGender" class="me-3">Gender</label>
+                <select th:field="*{gender}" id="fresherGender" class="form-select mb-3">
+                  <option th:value="true">Male</option>
+                  <option th:value="false">Female</option>
+                </select>
+                <!--end-->
+              </div>
+              <div class="col-6">
+                <!--Drop down Class Name-->
+                <label for="fresherClassName" class="me-3">Class Name</label>
+                <select th:field="*{idClazz.id}"  id="fresherClassName" class="form-select mb-3 col-6">
+                  <option th:each="class : ${classList}" th:text="${class.name}" th:value="${class.id}"></option>
+                </select>
+                <!--end-->
+              </div>
+              <div class="col-6">
+                <!--Drop down Salary-->
+                <label for="fresherSalary" class="me-3">Salary</label>
+                <select th:field="*{hasSalary}" id="fresherSalary" class="form-select mb-3 col-6">
+                  <option th:value="true">Yes</option>
+                  <option th:value="false">No</option>
+                </select>
+                <!--end-->
+              </div>
+              <div class="col-6">
+                <!--Drop down Link-->
+                <label for="fresherLink" class="me-3">FromCampusLink</label>
+                <select th:field="*{fromCampusLink}" id="fresherLink"
+                        class="form-select mb-3 col-6">
+                  <option th:value="true">Yes</option>
+                  <option th:value="false">No</option>
+                </select>
+                <!--end-->
+              </div>
+            </div>
+            <div class="d-grid col-6 mx-auto">
+              <button class="btn btn-primary" type="submit">Button</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

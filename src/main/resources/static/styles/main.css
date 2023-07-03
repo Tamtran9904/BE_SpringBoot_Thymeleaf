@@ -1,0 +1,38 @@
+.wrap {
+  margin: 10rem 10rem 0;
+  min-height: 15rem;
+}
+.height-1 {
+  min-height: 5rem;
+}
+
+
+.wrap a {
+  text-decoration: none;
+  color: black;
+}
+.hover-link:hover {
+  color: cornflowerblue;
+}
+.wrap p {
+  margin: 0;
+}
+i {
+  width: 16px;
+  height: 16px;
+}
+table th {
+  background-color: cornflowerblue;
+  color: white;
+}
+table td, th {
+  border: solid lightgrey 1px;
+  padding: 0.7rem;
+  text-align: center;
+}
+.hover-update:hover {
+  color: lightgreen;
+}
+.hover-delete:hover {
+  color: red;
+}

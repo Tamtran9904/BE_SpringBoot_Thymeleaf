@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/webjars/bootstrap/5.3.0/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/webjars/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/webjars/datatables/1.13.4/css/jquery.dataTables.min.css">
+  <title>Title</title>
+
+</head>
+<body>
+
+<div>
+  <div class="border border-3 wrap d-flex flex-column">
+    <h2 class="text-center mb-0 border-bottom text-primary height-1 p-4">FRESHER MANAGEMENT WEB
+      APPLICATION</h2>
+    <div class="row ps-5 flex-grow-1">
+      <div class="border-end col-2 p-2">
+        <div class="fs-3 text-primary">Menu</div>
+        <div class="m-2">
+          <p class="mb-3"><i class="fa-solid fa-user-plus icon"></i><a class="hover-link"
+                                                                       href="/example/fresher/add">&nbsp;&nbsp;Add
+            a new fresher</a></p>
+          <p class="mb-3"><i class="fa-solid fa-list icon"></i><a class="hover-link"
+                                                                  href="/example/fresher/find-all">&nbsp;&nbsp;Fresher
+            List</a></p>
+        </div>
+      </div>
+      <div class="col-10 flex-grow-1 p-5">
+        <div class="text-end">
+          <span th:text="${userName}" class="text-primary"></span>
+          <a href="/example/fresher/logout" class="text-decoration-underline hover-link">Log
+            out</a>
+        </div>
+        <h3 class="text-center mb-4">Freshers Lists</h3>
+        <div class="ps-5 pe-5">
+          <table id="myTable">
+            <thead>
+            <tr>
+              <th>Fresher Id</th>
+              <th>Fresher Name</th>
+              <th>Gender</th>
+              <th>BirthDay</th>
+              <th>Class Name</th>
+              <th>Salary</th>
+              <th>FromCampusLink</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="fresher : ${freshers}">
+              <td th:text="${fresher.getId()}"></td>
+              <td th:text="${fresher.getName()}"></td>
+              <td>
+                <span th:if="${fresher.getGender()} == true" th:text="Male"></span>
+                <span th:if="${fresher.getGender()} == false" th:text="Female"></span>
+              </td>
+              <td th:text="${fresher.getBirthDate()}"></td>
+              <td th:text="${fresher.getIdClazz().getName()}"></td>
+              <td>
+                <span th:if="${fresher.getHasSalary()} == true" th:text="YES"></span>
+                <span th:if="${fresher.getHasSalary()} == false" th:text="NO"></span>
+              </td>
+              <td>
+                <span th:if="${fresher.getFromCampusLink()} == true" th:text="YES"></span>
+                <span th:if="${fresher.getFromCampusLink()} == false" th:text="NO"></span>
+              </td>
+              <td>
+                <a class="btn btn-success" th:href="@{/example/fresher/showUpdate/{id}(id=${fresher.getId()})}">Update</a>
+                <a class="btn btn-danger" th:href="@{/example/fresher/delete/{id}(id=${fresher.getId()})}">Delete</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/webjars/jquery/3.6.4/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/webjars/datatables/1.13.4/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#myTable').DataTable();
+  });
+</script>
+
+</body>
+</html>
